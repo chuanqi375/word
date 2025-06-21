@@ -142,3 +142,27 @@ sick   adj.生病的
 breakfast  n.早餐
 dance    v.跳舞
 car   n.汽车
+
+2025.6.18
+castle   n.城堡
+fly  v.飞行
+newspaper  n.报纸
+player  n.选手
+draw  v.绘画
+dinner     n.晚餐
+allow    v.允许
+customer  n.顾客
+unfortunately   adv.遗憾的 可惜的
+queen  n.王后  女王
+
+2025.6.20
+railway    n.铁路
+excellent    adj.优秀的
+rain    n.雨水
+strance   adj.奇怪的
+video   n.视频
+suppose   v.认为
+coffee   n.咖啡
+make sure   phr.确保
+sorry   adj.抱歉的
+send  v.发送
