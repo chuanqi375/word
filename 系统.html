@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>背单词神器 - 学习、复习、拼写</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --danger: #f72585;
+            --warning: #ffd166;
+            --gray: #adb5bd;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--dark);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .tagline {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h2 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .stat-card .value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+        
+        .stat-card .label {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .tab {
+            padding: 12px 25px;
+            background: #f0f4f8;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .tab:hover:not(.active) {
+            background: #e2e8f0;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .upload-area {
+            border: 2px dashed var(--accent);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .upload-area:hover {
+            background: #f0f7ff;
+            border-color: var(--primary);
+        }
+        
+        .upload-area i {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .upload-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .upload-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .word-display {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .word {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .pronunciation {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 25px;
+        }
+        
+        .meaning {
+            font-size: 1.8rem;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 30px 0;
+            display: none;
+        }
+        
+        .example {
+            font-style: italic;
+            color: var(--gray);
+            font-size: 1.1rem;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: #e9ecef;
+            color: var(--dark);
+        }
+        
+        .btn-secondary:hover {
+            background: #dee2e6;
+            transform: translateY(-2px);
+        }
+        
+        .spelling-area {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .spelling-prompt {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+        
+        .spelling-input {
+            width: 100%;
+            max-width: 500px;
+            padding: 15px 20px;
+            border: 2px solid #dee2e6;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .spelling-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        .result-message {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 20px 0;
+            min-height: 30px;
+        }
+        
+        .correct {
+            color: #2ecc71;
+        }
+        
+        .incorrect {
+            color: var(--danger);
+        }
+        
+        .mastery-levels {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .level-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #e9ecef;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .level-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .level-btn.active {
+            background: var(--success);
+            color: white;
+        }
+        
+        .progress-container {
+            margin: 30px 0;
+        }
+        
+        .progress-bar {
+            height: 12px;
+            background: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .progress {
+            height: 100%;
+            background: var(--success);
+            border-radius: 10px;
+            width: 65%;
+        }
+        
+        .progress-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .word-list {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 20px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 15px;
+        }
+        
+        .word-item {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f1f3f5;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .word-item:last-child {
+            border-bottom: none;
+        }
+        
+        .word-text {
+            font-weight: 500;
+        }
+        
+        .word-meaning {
+            color: var(--gray);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-book"></i> 背单词神器</h1>
+            <p class="tagline">高效学习、智能复习、精准拼写 - 全面提升你的词汇量</p>
+        </header>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <div class="value">128</div>
+                <div class="label">总单词量</div>
+            </div>
+            <div class="stat-card">
+                <div class="value">86</div>
+                <div class="label">已掌握</div>
+            </div>
+            <div class="stat-card">
+                <div class="value">24</div>
+                <div class="label">待复习</div>
+            </div>
+            <div class="stat-card">
+                <div class="value">7</div>
+                <div class="label">连续学习(天)</div>
+            </div>
+        </div>
+        
+        <div class="dashboard">
+            <div class="card">
+                <h2><i class="fas fa-file-import"></i> 上传单词表</h2>
+                <p>上传Excel格式的单词表，格式要求：id | word | english_pronunciation | america_pronunciation | GQS | GQFC | XZFC | FS | meaning | example</p>
+                
+                <div class="upload-area" id="uploadArea">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>点击或拖拽文件到此处上传</h3>
+                    <p>支持 .xlsx 和 .xls 格式</p>
+                    <button class="upload-btn"><i class="fas fa-upload"></i> 选择文件</button>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-labels">
+                        <span>0%</span>
+                        <span>上传进度</span>
+                        <span>100%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2><i class="fas fa-tasks"></i> 学习进度</h2>
+                <p>今日目标: <strong>20</strong> 个单词 | 已完成: <strong>12</strong> 个</p>
+                
+                <div class="progress-container">
+                    <div class="progress-labels">
+                        <span>0%</span>
+                        <span>今日进度</span>
+                        <span>100%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 60%;"></div>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 25px;">最近添加的单词</h3>
+                <div class="word-list">
+                    <div class="word-item">
+                        <span class="word-text">elaborate</span>
+                        <span class="word-meaning">精心制作的</span>
+                    </div>
+                    <div class="word-item">
+                        <span class="word-text">phenomenon</span>
+                        <span class="word-meaning">现象</span>
+                    </div>
+                    <div class="word-item">
+                        <span class="word-text">simultaneous</span>
+                        <span class="word-meaning">同时发生的</span>
+                    </div>
+                    <div class="word-item">
+                        <span class="word-text">benevolent</span>
+                        <span class="word-meaning">仁慈的</span>
+                    </div>
+                    <div class="word-item">
+                        <span class="word-text">conundrum</span>
+                        <span class="word-meaning">难题</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tabs">
+            <div class="tab active" data-tab="learn">学习模式</div>
+            <div class="tab" data-tab="review">复习模式</div>
+            <div class="tab" data-tab="spelling">拼写测试</div>
+        </div>
+        
+        <div class="content-section" id="learnSection">
+            <h2><i class="fas fa-graduation-cap"></i> 学习新单词</h2>
+            <p>点击"显示释义"查看单词详细信息，根据掌握程度选择等级</p>
+            
+            <div class="word-display">
+                <div class="word">ubiquitous</div>
+                <div class="pronunciation">英音: /juːˈbɪkwɪtəs/ | 美音: /juːˈbɪkwɪtəs/</div>
+                
+                <div class="meaning" id="meaning">
+                    adj. 无所不在的，普遍存在的<br>
+                    GQS: U1 | GQFC: 3 | XZFC: 7 | FS: 形容词
+                </div>
+                
+                <div class="example" id="example">
+                    "Mobile phones are now ubiquitous in modern society."<br>
+                    (在现代社会，手机无处不在。)
+                </div>
+                
+                <button class="btn btn-primary" id="showMeaningBtn">
+                    <i class="fas fa-eye"></i> 显示释义
+                </button>
+            </div>
+            
+            <div class="controls">
+                <button class="btn btn-secondary">
+                    <i class="fas fa-step-backward"></i> 上一个
+                </button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-random"></i> 随机单词
+                </button>
+                <button class="btn btn-secondary">
+                    下一个 <i class="fas fa-step-forward"></i>
+                </button>
+            </div>
+            
+            <div class="mastery-levels">
+                <div>掌握程度:</div>
+                <button class="level-btn">1</button>
+                <button class="level-btn">2</button>
+                <button class="level-btn active">3</button>
+                <button class="level-btn">4</button>
+                <button class="level-btn">5</button>
+            </div>
+        </div>
+        
+        <div class="content-section" id="spellingSection" style="display:none;">
+            <h2><i class="fas fa-spell-check"></i> 拼写测试</h2>
+            <p>根据释义拼写单词，测试你的拼写能力</p>
+            
+            <div class="spelling-area">
+                <div class="spelling-prompt" id="spellingPrompt">
+                    形容词: 无所不在的，普遍存在的
+                </div>
+                
+                <input type="text" class="spelling-input" id="spellingInput" placeholder="在此输入单词拼写...">
+                
+                <button class="btn btn-primary" id="checkSpellingBtn">
+                    <i class="fas fa-check-circle"></i> 检查拼写
+                </button>
+                
+                <div class="result-message" id="resultMessage"></div>
+                
+                <div class="example" style="display: block; margin-top: 30px;">
+                    "Mobile phones are now ubiquitous in modern society."<br>
+                    (在现代社会，手机无处不在。)
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button class="btn btn-primary" id="nextSpellingBtn">
+                    <i class="fas fa-redo"></i> 下一个测试
+                </button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>背单词神器 © 2023 | 让单词学习更高效 | 每日坚持，词汇量突飞猛进</p>
+        </div>
+    </div>
+
+    <script>
+        // 切换标签页
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // 更新活跃标签
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // 显示对应内容
+                const tabId = this.getAttribute('data-tab');
+                if (tabId === 'learn') {
+                    document.getElementById('learnSection').style.display = 'block';
+                    document.getElementById('spellingSection').style.display = 'none';
+                } else if (tabId === 'spelling') {
+                    document.getElementById('learnSection').style.display = 'none';
+                    document.getElementById('spellingSection').style.display = 'block';
+                    document.getElementById('resultMessage').textContent = '';
+                    document.getElementById('spellingInput').value = '';
+                }
+            });
+        });
+        
+        // 显示单词释义
+        document.getElementById('showMeaningBtn').addEventListener('click', function() {
+            document.getElementById('meaning').style.display = 'block';
+            document.getElementById('example').style.display = 'block';
+            this.textContent = '隐藏释义';
+            this.innerHTML = '<i class="fas fa-eye-slash"></i> 隐藏释义';
+            
+            // 切换按钮功能
+            this.onclick = function() {
+                document.getElementById('meaning').style.display = 'none';
+                document.getElementById('example').style.display = 'none';
+                this.textContent = '显示释义';
+                this.innerHTML = '<i class="fas fa-eye"></i> 显示释义';
+                this.onclick = arguments.callee;
+            };
+        });
+        
+        // 检查拼写
+        document.getElementById('checkSpellingBtn').addEventListener('click', function() {
+            const userInput = document.getElementById('spellingInput').value.toLowerCase();
+            const resultMessage = document.getElementById('resultMessage');
+            
+            if (userInput === '') {
+                resultMessage.textContent = '请输入单词拼写';
+                resultMessage.className = 'result-message';
+                return;
+            }
+            
+            if (userInput === 'ubiquitous') {
+                resultMessage.textContent = '✓ 拼写正确！';
+                resultMessage.className = 'result-message correct';
+            } else {
+                resultMessage.textContent = '✗ 拼写错误，正确拼写: ubiquitous';
+                resultMessage.className = 'result-message incorrect';
+            }
+        });
+        
+        // 下一个拼写测试
+        document.getElementById('nextSpellingBtn').addEventListener('click', function() {
+            document.getElementById('resultMessage').textContent = '';
+            document.getElementById('spellingInput').value = '';
+            
+            // 模拟新的测试单词
+            const words = [
+                { prompt: "动词: 坚持，主张，声称", word: "assert" },
+                { prompt: "名词: 现象，奇观", word: "phenomenon" },
+                { prompt: "形容词: 同时发生的", word: "simultaneous" },
+                { prompt: "名词: 难题，复杂问题", word: "conundrum" }
+            ];
+            
+            const randomWord = words[Math.floor(Math.random() * words.length)];
+            document.getElementById('spellingPrompt').textContent = randomWord.prompt;
+        });
+        
+        // 上传区域交互
+        const uploadArea = document.getElementById('uploadArea');
+        uploadArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            this.style.backgroundColor = '#f0f7ff';
+            this.style.borderColor = '#4361ee';
+        });
+        
+        uploadArea.addEventListener('dragleave', function() {
+            this.style.backgroundColor = '';
+            this.style.borderColor = '#4895ef';
+        });
+        
+        uploadArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            this.style.backgroundColor = '';
+            this.style.borderColor = '#4895ef';
+            alert('文件已接收: ' + e.dataTransfer.files[0].name);
+        });
+    </script>
+</body>
+</html>
