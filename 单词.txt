@@ -159,7 +159,7 @@ queen  n.王后  女王
 railway    n.铁路
 excellent    adj.优秀的
 rain    n.雨水
-strance   adj.奇怪的
+strange   adj.奇怪的
 video   n.视频
 suppose   v.认为
 coffee   n.咖啡
