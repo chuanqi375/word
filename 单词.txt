@@ -166,3 +166,15 @@ coffee   n.咖啡
 make sure   phr.确保
 sorry   adj.抱歉的
 send  v.发送
+
+2025.6.21
+plant    n.植物
+drawer   n.抽屉
+butterfly   n.蝴蝶
+light   v.点火
+bill   n.账单
+walk    n.行走
+fail    v.不及格
+speak   v.说话
+sugar   n.糖
+plant   n.植物
