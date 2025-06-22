@@ -159,7 +159,7 @@ queen  n.王后  女王
 railway    n.铁路
 excellent    adj.优秀的
 rain    n.雨水
-strange   adj.奇怪的
+strance   adj.奇怪的
 video   n.视频
 suppose   v.认为
 coffee   n.咖啡
@@ -178,3 +178,16 @@ fail    v.不及格
 speak   v.说话
 sugar   n.糖
 plant   n.植物
+
+2025.6.22
+print   v.印刷
+nurse    n.护士
+prize  n.奖品
+post office   phr.邮局
+DVD player   phr.DVD播放机
+favourite   adj.特别喜欢的
+metal   n.金属
+noise   n.噪声
+French fries   phr.薯条
+glass  n.玻璃
+ 
