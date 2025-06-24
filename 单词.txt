@@ -190,4 +190,27 @@ metal   n.金属
 noise   n.噪声
 French fries   phr.薯条
 glass  n.玻璃
- 
+
+2025.6.23
+carry   v.携带
+rent    n.租金
+bright   adj.明亮的
+tent   n.帐篷
+bath   n.洗澡
+pence   n.便士
+coach    n.教练
+afraid   adj.害怕的
+pilot    n.领航员
+duck   n.鸭子
+
+2025.6.24
+pound    n.英镑
+husband   n.丈夫
+floor   n.地板
+buy   v.买
+fish  n.鱼
+sale  n.廉价出售
+doctor   n.医生
+blood  n.血液
+film   n.电影
+post   v.邮寄
