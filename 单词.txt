@@ -214,3 +214,15 @@ doctor   n.医生
 blood  n.血液
 film   n.电影
 post   v.邮寄
+
+2025.6.26
+die v.死亡
+letter  n.信
+fire   n.火灾
+size   n.大小
+museum   n.博物馆
+space  n.空间
+teach  v.教
+teacher   n.教师
+assistant  n.助理
+library   n.图书馆
