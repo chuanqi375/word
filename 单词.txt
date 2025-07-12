@@ -343,7 +343,7 @@ calender    n.日历
 explore   n.探险家
 but   conj.但是
 hockey  n.曲棍球
-cafeteria   n.自主课堂
+cafeteria   n.自主餐厅
 
 2025.7.12
 helicopter    n.直升机
