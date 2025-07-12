@@ -226,3 +226,133 @@ teach  v.教
 teacher   n.教师
 assistant  n.助理
 library   n.图书馆
+
+2025.6.27
+final   adj.最后的
+trouble   n.烦恼
+parent   n.父亲或母亲
+sound   v.听起来
+poor   adj.贫穷的
+plan  v.计划
+careful   adj.仔细地
+born  v.出世
+
+2025.6.29
+beach  n.海滩
+electricity   n.电
+nature  n.大自然
+reason    n.原因
+continue  v.继续
+stage  n.舞台
+feeling  n.感觉
+paper  n.纸
+hall   n.会堂
+garden   n.花园
+
+2025.6.30
+remember  v.记得
+crowd   n.人群
+century   n.世纪
+cost   v.花费
+believe   v.相信
+history   n.历史
+move   v.移动
+building  n.建筑
+roof   n.屋顶
+sing   v.唱
+
+2025.7.2
+hospital  n.医院
+mix    v.混合
+run   n.跑步
+centre     n.中心
+south    adv.南
+pay   v.支付
+language   n.语言
+order    v.点（食物，饮料）
+difficult   adj.困难的
+read   v.读
+
+2025.7.4
+block   n.阻挡
+city   n.城市
+study  v.学习
+behind     prep.在.........后面
+give   v.给
+cent    n.分币
+information  n.信息
+business   n.商业
+area   n.面积
+line   n.线
+
+2025.7.5
+rap  n.说唱
+name   n.名字
+against  prep.反对
+stuff   n.东西
+round   v.弯曲
+above n.上面的东西
+DVD   abbr.数字化视频光盘
+large   v.作乐
+party   n.派对
+place   n.地方
+
+2025.7.6
+electric   adj.电的
+mail   v.邮寄
+good-looking   adj.好看的
+metre    n.米
+ill    adj.坏的
+present   n.礼物
+work    v.工作
+man   n.成年男子
+way   n.道路
+belong   v.属于
+
+2025.7.7
+document   n.文件
+exhibition   n.展览
+engine   v.给.......装引擎
+twice  adv.两次
+true   adj.真实的
+east   n.东方
+once     adv.一次
+around   prep. 在.......周围
+colleague  n.同事
+lokk after   phr.照顾
+
+2025.7.10
+race   n.(速度上)比赛
+disco   n.迪斯科舞
+walking   n.步行
+bookcase  n.书橱
+its   det.它的
+password    n.密码
+instructions   n.指示
+police officer  n.警官
+burger   n.汉堡包
+police station   n.警察局
+
+2025.7.11
+frightened    adj.受惊吓的
+bin   n.箱柜
+anyway   adv.无论如何
+by   prep.通过
+parking lot  n.停车场
+calender    n.日历
+explore   n.探险家
+but   conj.但是
+hockey  n.曲棍球
+cafeteria   n.自主课堂
+
+2025.7.12
+helicopter    n.直升机
+driver   n.驾驶员
+camel    n.骆驼
+CD player   phr.CD播放器
+heavy   adj.重的
+hit   v.命中
+arrive   v.到达
+fast   adj.迅速的
+drink   v.喝
+message   n.消息
