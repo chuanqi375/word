@@ -380,3 +380,15 @@ down   adv.在下面
 first   det.第一
 right   adj.正确的
 take   v.拿走
+
+2025.7.15
+already    adv.已经
+any   pron.任何一个
+lend   v.借给
+she    pron.（主格）她
+supermarket    n.超市
+hip hop   n,嘻哈音乐
+handbag    n.(女用)手提包
+grape   n.葡萄
+blog   n.博客
+something   pron.某事物
